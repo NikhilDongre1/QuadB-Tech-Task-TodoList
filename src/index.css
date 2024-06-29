@@ -1,12 +1,15 @@
-*{
+/* Reset and box-sizing */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.wrapper{
-  max-width: 1440px;
+/* Wrapper */
+.wrapper {
+  /* max-width: 1440px; */
   width: 100%;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0 auto;
@@ -14,48 +17,108 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #121212; /* Dark background color */
+  color: #e0e0e0; /* Light text color */
 }
 
-.custom-form{
+/* Custom Form */
+.custom-form {
   width: 400px;
   height: auto;
   margin: 20px auto;
+  background-color: #1e1e1e; /* Dark form background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.input-and-btn{
+/* Input and Button */
+.input-and-btn {
   display: flex;
 }
 
-.todo-box{
+/* Todo Box */
+.todo-box {
   width: 400px;
-  margin: 0 auto;
+  margin: 10px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #1e1e1e; /* Dark todo background */
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.todo-box .content{
+.todo-box .content {
   display: flex;
 }
 
-.todo-box .content p{
+.todo-box .content p {
   margin-top: -6px;
   margin-left: 6px;
+  color: #e0e0e0; /* Light text color */
 }
 
-.todo-box span{
+.todo-box span {
   margin: 0 5px;
+  color: #e0e0e0; /* Light text color */
 }
 
-.delete-all{
+/* Delete All Button */
+.delete-all {
   width: 400px;
-}
-
-.actions-box{
+  background-color: #ff5252; /* Dark red for delete button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.back-btn{
+.delete-all:hover {
+  background-color: #ff1744; /* Lighter red on hover */
+}
+
+/* Actions Box */
+.actions-box {
+  cursor: pointer;
+  color: #e0e0e0; /* Light icon color */
+}
+
+/* Back Button */
+.back-btn {
   margin-top: 5px;
   width: 100%;
+  background-color: #ff5252; /* Dark red for back button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #ff1744; /* Lighter red on hover */
+}
+
+/* Additional Styles for Inputs */
+input[type="text"], .form-check-input {
+  background-color: #1e1e1e; /* Dark input background */
+  color: #e0e0e0; /* Light input text color */
+  border: 1px solid #424242; /* Dark border */
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="text"]::placeholder {
+  color: #bdbdbd; /* Light placeholder color */
+}
+
+.form-check-input:checked {
+  background-color: #ff5252; /* Dark red for checked checkbox */
+  border-color: #ff5252;
 }

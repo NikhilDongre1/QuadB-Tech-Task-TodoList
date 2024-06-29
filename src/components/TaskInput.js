@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo, handleEditSubmit } from '../redux/todoapp/actions';
+import { addTodo, updateTodo } from '../redux/actions';
 
 export const TaskInput = ({ editFormVisibility, editTodo, cancelUpdate }) => {
   const dispatch = useDispatch();
@@ -13,9 +13,9 @@ export const TaskInput = ({ editFormVisibility, editTodo, cancelUpdate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let date = new Date();
-    let time = date.getTime();
-    let todoObj = {
+    const date = new Date();
+    const time = date.getTime();
+    const todoObj = {
       id: time,
       todo: todoValue,
       completed: false
@@ -26,22 +26,18 @@ export const TaskInput = ({ editFormVisibility, editTodo, cancelUpdate }) => {
 
   const editSubmit = (e) => {
     e.preventDefault();
-    let editedObj = {
+    const editedObj = {
       id: editTodo.id,
       todo: editValue,
-      completed: false
+      completed: editTodo.completed
     };
-    dispatch(handleEditSubmit(editedObj));
+    dispatch(updateTodo(editedObj));
+    cancelUpdate();
   };
 
   return (
-    <div className="container-sm mx-20" style={{
-      flexDirection: "column",
-      alignItems: "flex-start",
-      maxWidth:"600px"
-    
-  }}>
-      {editFormVisibility === false ? (
+    <div className="container-sm mx-20" style={{ flexDirection: "column", alignItems: "flex-start", maxWidth: "600px" }}>
+      {!editFormVisibility ? (
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
             <input
@@ -74,11 +70,7 @@ export const TaskInput = ({ editFormVisibility, editTodo, cancelUpdate }) => {
               <button type="submit" className="btn btn-secondary">
                 UPDATE
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={cancelUpdate}
-              >
+              <button type="button" className="btn btn-primary" onClick={cancelUpdate}>
                 BACK
               </button>
             </div>
